@@ -3,6 +3,7 @@ MAINTAINER Alper Kucukural <alper@kucukural.com>
 LABEL Description="UCSC Genome Browser database"
 
 ENV DEBIAN_FRONTEND noninteractive
+RUN echo "alper"
 
 RUN apt-get update && apt-get install -y wget rsync \
     mysql-server \
@@ -36,6 +37,7 @@ RUN mysqld -u root & \
     echo "create database hgcentral" | mysql && \
     echo "create database hgFixed" | mysql && \
     echo "create database hg38" | mysql && \
+    echo "create database customTrash | mysql && \
     mysql -D hgcentral < hgcentral.sql && \
     rm hgcentral.sql
 
